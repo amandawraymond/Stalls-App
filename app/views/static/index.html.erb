@@ -45,7 +45,8 @@
         </tr>
       </table>
     <button ng-click='deleteStall(selectedStall)'>Delete Stall</button>
-    <button ng-click='setEditStall(selectedStall)'>Edit Stall</button>
+    <button ng-hide='editStall' ng-click='setEditStall(selectedStall)'>Edit Stall</button>
+    <button ng-show='editStall' ng-click='updateStall(editStall)'>Update Stall</button>
   </section>
   <section ng-hide="selectedStall">
     <h2>Leather Lane</h2>

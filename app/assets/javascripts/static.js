@@ -31,11 +31,16 @@ angular.module('leatherLaneMarketApp', ['ngAnimate'])
         });
        };
 
-       
+       $scope.setEditStall = function(stall){
+        $scope.editStall = stall;
+       }
 
+       $scope.updateStall = function(stall){
+        $http.put('/stalls/' + stall.id + '.json', { stall: stall }).success(function(data){
+          $scope.editStall = null;
 
-
-
+        });
+       };
 
 
      }]);
