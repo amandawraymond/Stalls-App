@@ -1,6 +1,12 @@
 angular.module('leatherLaneMarketApp', ['ngAnimate'])
-     .controller('MarketController', ["$scope", function($scope){
-       $scope.stalls = stalls;
+     .controller('MarketController', ["$http","$scope", function($http, $scope){
+       $scope.stalls = [];
+
+       $http.get('/stalls.json').success(function(data){
+        $scope.stalls = data;
+       })
+
+
 
        $scope.selectStall= function(stall) {
         $scope.selectedStall = stall;
@@ -10,46 +16,28 @@ angular.module('leatherLaneMarketApp', ['ngAnimate'])
         $scope.selectedStall = false;
        };
 
-       $scope.addStall = function() {
-        $scope.stalls.push($scope.newStall);
-        $scope.newStall = false;
+      $scope.addStall = function() {
+        $http.post('/stalls.json', { stall: $scope.newStall }).success(function(data){
+        $scope.stalls.push(data);
+        $scope.newStall = null;
         $scope.stallForm.$setPristine();
+        });
        };
+
+       $scope.deleteStall = function(stall) {
+        $http.delete('/stalls/' + stall.id + '.json').success(function(data){
+          $scope.stalls.splice( $scope.stalls.indexOf(stall), 1 );
+          $scope.selectedStall = null;
+        });
+       };
+
+       
+
+
+
+
 
 
      }]);
-
-stalls = [
-  {
-    name: "Burrito",
-    price: 5,
-    description:  "Meat and vegetables in a delicious wrap"
-  },
-  {
-    name: "Pizza",
-    price: 6.5,
-    description:  "Cheese and meat and veg on some dough"
-  },
-  {
-    name: "Fallafel",
-    price: 4.5,
-    description: "Deep fried delicious chickpeas"
-  },
-   {
-    name: "Club Sammy",
-    price: 5,
-    description:  "Meat and vegetables in a delicious wrap"
-  },
-  {
-    name: "Steak Melt",
-    price: 6.5,
-    description:  "Cheese and meat and veg on some dough"
-  },
-  {
-    name: "Chips",
-    price: 4.5,
-    description: "Deep fried delicious chickpeas"
-  }
-]
 
   
