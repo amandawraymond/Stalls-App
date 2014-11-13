@@ -4,7 +4,7 @@ $(function(){
             map;
 
            mapOptions = { 
-          zoom:8,
+          zoom:15,
           center:new google.maps.LatLng(51.519949, -0.109343),
           mapTypeId:google.maps.MapTypeId.ROADMAP
         };
