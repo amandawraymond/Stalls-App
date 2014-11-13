@@ -3,9 +3,9 @@ $(function(){
             canvas,
             map;
 
-        mapOptions = { 
+           mapOptions = { 
           zoom:8,
-          center:new google.maps.LatLng(51.508742, -0.120850),
+          center:new google.maps.LatLng(51.519949, -0.109343),
           mapTypeId:google.maps.MapTypeId.ROADMAP
         };
         canvas = document.getElementById("googleMap");
