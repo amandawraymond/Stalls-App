@@ -181,5 +181,15 @@ form.ng-invalid.ng-dirty {
   height: 40px;
   opacity: 1;
 }
+body{
+  width: 100%;
+}
+
+#googleMap{
+  width:100%; 
+  min-height:700px; 
+  min-width:700px;
+  position: relative;
+}
  
  
